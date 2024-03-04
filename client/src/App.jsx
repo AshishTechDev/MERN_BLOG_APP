@@ -7,6 +7,7 @@ import SignIn from './pages/SignIn.jsx'
 import Dashboard from './pages/Dashboard.jsx'
 import Projects from './pages/Projects.jsx'
 import About from './pages/About.jsx'
+import Footer from './components/Footer.jsx'
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
           <Route path='/about' element={<About/>} />
           <Route path='/projects' element={<Projects/>} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   )
 }
