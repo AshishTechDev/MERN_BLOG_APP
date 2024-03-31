@@ -1,4 +1,4 @@
-import {useEffect ,useState} from 'react' ;
+import {useEffect, useState} from 'react' ;
 import { useLocation } from 'react-router-dom' ;
 import DashProfile from '../components/DashProfile';
 import DashSidebar from '../components/DashSidebar';
@@ -14,7 +14,7 @@ export default function Dashboard() {
      if (tabFromUrl) {
         setTab(tabFromUrl);
      }
-  }, [Location.search]);
+  }, [location.search]);
 
   return (
     <div className='min-h-screen flex flex-col md:flex-row'>

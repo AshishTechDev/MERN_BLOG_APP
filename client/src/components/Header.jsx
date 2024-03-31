@@ -1,4 +1,4 @@
-import { Button, Dropdown, Navbar, TextInput } from 'flowbite-react'
+import { Avatar, Button, Dropdown, Navbar, TextInput } from 'flowbite-react'
 import { Link, useLocation } from 'react-router-dom'
 import {AiOutlineSearch} from  'react-icons/ai';
 import {FaMoon, FaSun } from 'react-icons/fa' ;
@@ -41,7 +41,7 @@ export default function Header() {
         >
         <Dropdown.Header>
           <span className='block text-sm'>@{currentUser.username}</span>
-          <span className='block text-sm font-medium truncate'>@{currentUser.username}</span>
+          <span className='block text-sm font-medium truncate'>{currentUser.email}</span>
         </Dropdown.Header>
         <Link to={'/dashboard?tab=profile'}>
           <Dropdown.Item>Profile</Dropdown.Item>
