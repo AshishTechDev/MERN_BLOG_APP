@@ -1,14 +1,12 @@
-import { errorHandler } from "../utils/error.js";
-import User from "../models/user.model.js";
-import bcryptjs from 'bcryptjs' ;
-
+import bcryptjs from 'bcryptjs';
+import { errorHandler } from '../utils/error.js';
+import User from '../models/user.model.js';
 
 export const test = (req, res) => {
   res.json({  message: 'API is working'});
 };
 
 export const updateUser = async (req, res, next) => {
-console.log(req.user);
 if(req.user.id !== req.params.userId){
   return next(errorHandler(403, 'You are not allowed to update this user'));
 }
@@ -16,9 +14,8 @@ if(req.body.password){
   if(req.body.password.length < 6){
     return next(errorHandler(400, 'Password must be at least 6 characters'));
   }
-  console.log("password-error");
 
-  req.body.password = bcryptjs.hashSync(req.body.pasword, 10);
+  req.body.password =  bcryptjs.hashSync(req.body.password, 10);
 }
 if(req.body.username){
   if(req.body.username.length < 7 || req.body.username.length > 20){

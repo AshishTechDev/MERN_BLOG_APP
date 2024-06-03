@@ -1,4 +1,4 @@
-import { Alert, Button, Modal, TextInput } from 'flowbite-react';
+import { Alert, Button, Modal, ModalBody, TextInput } from 'flowbite-react';
 import { useEffect } from 'react';
 import { useRef, useState } from 'react';
 import {useSelector} from 'react-redux' ;
@@ -9,20 +9,20 @@ import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import {updateStart, updateSuccess, updateFailure,
 deleteUserStart, deleteUserSuccess, deleteUserFailure, 
-signoutSuccess
+signoutSuccess,
 } from '../redux/user/userSlice';
 import { useDispatch } from 'react-redux';
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 
 
 export default function DashProfile() {
-  const {currentUser,error, loading} = useSelector(state => state.user);
+  const {currentUser, error, loading} = useSelector(state => state.user);
   const [imageFile, setImageFile] = useState(null);
   const [imageFileUrl, setImageFileUrl] = useState(null);
 
   const [imageFileUploadProgress, setImageFileUploadProgress] = useState(null);
   const [imageFileUploadError, setImageFileUploadError] = useState(null);
-  const [imageFileUploading, setImageFileUploading] = useState(false);
+  const [imageFileUploading, setImageFileUploading] = useState(null);
   const [updateUserSuccess, setUpdateUserSuccess] = useState(null);
   const [updateUserError, setUpdateUserError] = useState(null);
   const [showModal, setShowModal] = useState(false);
@@ -75,14 +75,13 @@ export default function DashProfile() {
     );
   };
 
-  const handleChange = (e) => {
+  const handleChange =  (e) => {
     setFormData({...formData, [e.target.id]: e.target.value });
   };
     const handleSubmit = async (e) => {
       e.preventDefault();
       setUpdateUserError(null);
       setUpdateUserSuccess(null);
-      console.log(currentUser);
       if(Object.keys(formData).length === 0) {
         setUpdateUserError("No changes were made");
         return ;
@@ -98,7 +97,6 @@ export default function DashProfile() {
 
           //5:06:11
           headers: {
-            'Accept': 'application/json',
             'Content-Type' : 'application/json',
           },
           body: JSON.stringify(formData),
@@ -114,7 +112,7 @@ export default function DashProfile() {
 
       } catch (error) {
         dispatch(updateFailure(error.message));
-        setUpdateUserError(data.message);
+        setUpdateUserError(error.message);
 
       }
     };
@@ -175,7 +173,7 @@ export default function DashProfile() {
           )}
           <img  alt="user" 
           src={imageFileUrl || currentUser.profilePicture}
-          className={`rounded-full w-full h-full object-cover border-8 border-[lightgray]${imageFileUploadProgress && imageFileUploadProgress < 100 && 'opacity-60'}`} />
+          className={`rounded-full w-full h-full object-cover border-8 border-[lightgray] ${imageFileUploadProgress && imageFileUploadProgress < 100 && 'opacity-60'}`} />
         </div>
 
         {imageFileUploadError && 
