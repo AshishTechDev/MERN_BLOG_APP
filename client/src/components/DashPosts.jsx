@@ -24,7 +24,7 @@ export default function DashPosts() {
         const data = await res.json();
         if(res.ok){
               setUserPosts(data.posts);
-              if(data.posts.length < 9){
+              if(data.posts.length <= 9){
                 setshowMore(false);
               }
         }
@@ -47,7 +47,7 @@ export default function DashPosts() {
       const data = await res.json();
       if(res.ok){
         setUserPosts((prev) => [...prev, ...data.posts]);
-        if(data.posts.length < 9){
+        if(data.posts.length <= 9){
           setshowMore(false);
         }
       }
@@ -121,7 +121,7 @@ export default function DashPosts() {
                     </span>
                   </Table.Cell>
                       <Table.Cell>
-                              <Link className='text-teal-500 hover:underline cursor-pointer' to={`/update-post/${post.id}`}>
+                              <Link className='text-teal-500 hover:underline cursor-pointer' to={`/update-post/${post._id}`}>
                             <span >Edit</span>
                               </Link>
                       </Table.Cell>
