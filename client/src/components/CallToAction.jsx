@@ -7,10 +7,10 @@ export default function CallToAction() {
       <div className="flex-1 justify-center flex flex-col">
         <h2 className='text-2xl'>Want to learn more about Javascript?</h2>
         <p className='text-gray-500 my-2'>
-          Checkout these resources with 100 Javascript Projects
+          Checkout My Youtube Channel Ashish Tech Developer
         </p>
         <Button gradientDuoTone='purpleToPink' className='rounded-tl-xl rounded-bl-none'>
-          <a href="https://www.100jsprojects.com" target='_blank' rel='noopener no referrer'>100 JavaScript Projects</a>
+          <a href="" target='_blank' rel='noopener no referrer'>Visit Youtube Now</a>
         </Button>
       </div>
       <div className='p-7 flex-1'>
