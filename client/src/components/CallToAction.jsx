@@ -10,7 +10,7 @@ export default function CallToAction() {
           Checkout My Youtube Channel Ashish Tech Developer
         </p>
         <Button gradientDuoTone='purpleToPink' className='rounded-tl-xl rounded-bl-none'>
-          <a href="" target='_blank' rel='noopener no referrer'>Visit Youtube Now</a>
+          <a href="https://www.youtube.com/@AshishTechDev" target='_blank' rel='noopener no referrer'>Visit Youtube Now</a>
         </Button>
       </div>
       <div className='p-7 flex-1'>
